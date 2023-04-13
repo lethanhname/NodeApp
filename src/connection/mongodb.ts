@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 import {
   DB_AUTHENTICATE,
   DB_HOST,
@@ -6,14 +6,14 @@ import {
   DB_NAME,
   DB_USERNAME,
   DB_PASSWORD,
-} from '../config/secrets'
+} from '../config/secrets';
 
 export default class MongoDb implements Connection {
-  uri: string
-  connectOptions: object
+  uri: string;
+  connectOptions: object;
 
   constructor() {
-    this.uri = `mongodb://${DB_HOST}:${DB_PORT || '27017'}/${DB_NAME}`
+    this.uri = `mongodb://${DB_HOST}:${DB_PORT || '27017'}/${DB_NAME}`;
     this.connectOptions =
       DB_AUTHENTICATE === 'true'
         ? {
@@ -25,17 +25,17 @@ export default class MongoDb implements Connection {
         : {
           useNewUrlParser: true,
           useUnifiedTopology: true,
-        }
+        };
   }
 
   async connect() {
     mongoose
       .connect(this.uri, this.connectOptions)
       .then(() => {
-        console.log('Connect Database MongoDb successfully')
+        console.log('Connect Database MongoDb successfully');
       })
-      .catch((error: { message: any }) => {
-        console.log(error.message)
-      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   }
 }

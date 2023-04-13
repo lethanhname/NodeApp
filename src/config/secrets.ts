@@ -1,14 +1,14 @@
-import dotenv from 'dotenv'
-import fs from 'fs'
+import dotenv from 'dotenv';
+import fs from 'fs';
 
 if (fs.existsSync('.env')) {
   dotenv.config({
     path: '.env',
-  })
+  });
 } else {
   dotenv.config({
     path: '.env.development',
-  })
+  });
 }
 
 export const {
@@ -20,4 +20,4 @@ export const {
   DB_NAME,
   DB_USERNAME,
   DB_PASSWORD
-} = process.env
+} = process.env;

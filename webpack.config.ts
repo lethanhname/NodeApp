@@ -48,7 +48,7 @@ const getConfig = (
                 chunks: "all",
             }
         }
-    }
-}
+    };
+};
 
 export default getConfig;
