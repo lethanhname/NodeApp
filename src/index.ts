@@ -6,6 +6,7 @@ import { NODE_ENV, PORT } from './config/secrets';
 import ConnectionFactory from './connection/connection-factory';
 import errorMiddleware from './middleware/error.middleware';
 import loggerMiddleware from './middleware/logger.middleware';
+import router from './routes/router';
 class ExpressServer {
   public app: express.Application;
 
@@ -59,6 +60,7 @@ class ExpressServer {
     this.app.get('/', (req, res) => {
       res.send('<h1>Welcome to express server</h1>');
     });
+    this.app.use(router.routes);
   }
   private initErrorHandling() {
     this.app.use(errorMiddleware);
