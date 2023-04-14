@@ -1,7 +1,6 @@
 import express from 'express';
 import BaseController from '../../routes/base.controller';
 import productService from './product.service';
-import { BaseRequest } from '../../routes/base.request';
 import CreateProductRequest from './product.model';
 import validationMiddleware from '../../middleware/validation.middleware';
 
@@ -9,22 +8,25 @@ class ProductController extends BaseController {
   public initRoutes(): void {
     const path = '/products';
     this.router.get(path, this.getAll);
-    this.router.post(path, validationMiddleware(CreateProductRequest), this.getAll);
+    this.router.post(path, validationMiddleware(CreateProductRequest), this.createProduct);
   }
 
-  
-public createProduct = async (req: BaseRequest, res: express.Response, next: express.NextFunction) => {
-  try {
+  createProduct = async (req: express.Request, res: express.Response) => {
+    try {
       const product = await productService.create(req.body);
       res.status(201).json({
-          success: true,
-          message: 'CREATE_PRODUCT_SUCCESSFULLY',
-          content: product,
+        success: true,
+        message: 'CREATE_PRODUCT_SUCCESSFULLY',
+        content: product
       });
-  } catch (error) {
-      next(error);
-  }
-};
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: 'CREATE_PRODUCT_Error',
+        content: error
+      });
+    }
+  };
   getAll = (request: express.Request, response: express.Response) => {
     response.send([{ name: 'test' }]);
   };
