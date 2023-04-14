@@ -10,20 +10,20 @@ const getConfig = (
         target: "node",
         mode: argv.mode === "production" ? "production" : "development",
         externals: [nodeExternals()],
-        plugins: [
-            new WebpackShellPluginNext({
-                onBuildStart: {
-                    scripts: ["npm run clean:dev"],
-                    blocking: true,
-                    parallel: false,
-                },
-                onBuildEnd: {
-                    scripts: ["npm run dev"],
-                    blocking: false,
-                    parallel: true,
-                },
-            })
-        ],
+        // plugins: [
+        //     new WebpackShellPluginNext({
+        //         onBuildStart: {
+        //             scripts: ["npm run clean:dev"],
+        //             blocking: true,
+        //             parallel: false,
+        //         },
+        //         onBuildEnd: {
+        //             scripts: ["npm run dev"],
+        //             blocking: false,
+        //             parallel: true,
+        //         },
+        //     })
+        // ],
         module: {
             rules: [{
                 test: /\.(ts|js)$/,
@@ -47,7 +47,8 @@ const getConfig = (
             splitChunks: {
                 chunks: "all",
             }
-        }
+        },
+        devtool: "inline-source-map"
     };
 };
 

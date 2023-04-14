@@ -8,6 +8,7 @@
     "clean:dev": "rimraf build",
     "build": "webpack --mode production --config webpack.config.ts",
     "dev": "nodemon build/index.js --watch build",
+    "dev:debug": "webpack-dev-server --mode development --config webpack.config.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -56,9 +57,12 @@
     "webpack-shell-plugin-next": "^2.3.1"
   },
   "dependencies": {
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mongoose": "^7.0.3"
+    "mongoose": "^7.0.3",
+    "mongoose-paginate-v2": "^1.7.1"
   }
 }

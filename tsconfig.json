@@ -1,26 +1,25 @@
 {
   "compilerOptions": {
-      "target": "es5",
-      "module": "commonjs",
-      "sourceMap": true,
-      "strict": true,
-      "moduleResolution": "node",
-      "esModuleInterop": true,
-      "allowJs": true,
-      "allowSyntheticDefaultImports": true,
-      "forceConsistentCasingInFileNames": true,
-      "noFallthroughCasesInSwitch": true,
-      "resolveJsonModule": true,
-      "baseUrl": "./src",
-      "skipLibCheck": true,
-      "typeRoots": ["src/config/types", "node_modules/@types"],
-      "paths": {
-        "*": ["node_modules/*", "src/types/*"]
-    }
+    "target": "es5",
+    "module": "commonjs",
+    "sourceMap": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "baseUrl": "./src",
+    "skipLibCheck": true,
+    "typeRoots": ["src/config/types", "node_modules/@types"],
+    "paths": {
+      "*": ["node_modules/*", "src/types/*"]
+    },
+    "strictPropertyInitialization": false,
+    "experimentalDecorators": true
   },
   "include": ["src/**/*.ts", "src/index.ts"],
-  "exclude": [
-      "node_modules", "src/**/*.spec.ts", 
-      "src/**/__tests__/*.ts"
-  ]
+  "exclude": ["node_modules", "src/**/*.spec.ts", "src/**/__tests__/*.ts"]
 }
