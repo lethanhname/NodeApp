@@ -11,7 +11,8 @@ class ProductController extends BaseController {
     this.router.post(path, validationMiddleware(CreateProductRequest), this.createProduct);
   }
 
-  createProduct = async (req: express.Request, res: express.Response) => {
+  createProduct = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+
     try {
       const product = await productService.create(req.body);
       res.status(201).json({
@@ -20,11 +21,7 @@ class ProductController extends BaseController {
         content: product
       });
     } catch (error) {
-      res.status(500).json({
-        success: false,
-        message: 'CREATE_PRODUCT_Error',
-        content: error
-      });
+      next(error);
     }
   };
   getAll = (request: express.Request, response: express.Response) => {
