@@ -1,5 +1,6 @@
 
 import express from 'express';
+import helmet from 'helmet';
 import bodyParser from 'body-parser';
 
 import { NODE_ENV, PORT } from './config/secrets';
@@ -39,6 +40,7 @@ class ExpressServer {
 
   private initMiddleware() {
     this.app.use(loggerMiddleware);
+    this.app.use(helmet());
     // handle body parser
     this.app.use(bodyParser.json());
     // handle cors error

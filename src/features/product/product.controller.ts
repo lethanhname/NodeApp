@@ -11,18 +11,13 @@ class ProductController extends BaseController {
     this.router.post(path, validationMiddleware(CreateProductRequest), this.createProduct);
   }
 
-  createProduct = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
-
-    try {
-      const product = await productService.create(req.body);
-      res.status(201).json({
-        success: true,
-        message: 'CREATE_PRODUCT_SUCCESSFULLY',
-        content: product
-      });
-    } catch (error) {
-      next(error);
-    }
+  createProduct = async (req: express.Request, res: express.Response) => {
+    const product = await productService.create(req.body);
+    res.status(201).json({
+      success: true,
+      message: 'CREATE_PRODUCT_SUCCESSFULLY',
+      content: product
+    });
   };
   getAll = (request: express.Request, response: express.Response) => {
     response.send([{ name: 'test' }]);
